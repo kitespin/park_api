@@ -16,3 +16,28 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// we can group all our Parks routes together
+$router->group(["prefix" => "parks"], function ($router) {
+
+	$router->post("/", "Parks@store");
+	//it gets the article index
+	$router->get("/", "Parks@index");
+    // {article} is a url parameter representing the id we want
+    //get Parks route
+	$router->get("{park}", "Parks@show");
+    //editing route
+	$router->put("{park}", "Parks@update");
+    //delete park route
+	$router->delete("{park}", "Parks@destroy");
+
+
+	
+	//the 1 to many route setup for sport post this stays in here as its sport are linked to the park
+	$router->post("{park}/sports", "Sports@store");
+	//get sport post route this stays in here as its sport are linked to the park
+	$router->get("{park}/sports", "Sports@index");
+	
+	
+
+});
