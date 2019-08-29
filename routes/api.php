@@ -44,10 +44,10 @@ $router->group(["prefix" => "boroughs"], function ($router) {
 	$router->get("/", "Boroughs@index");
     // {borough} is a url parameter representing the id we want
     //get Boroughs route
-//	$router->get("{borough}", "Boroughs@show");
+	$router->get("{borough}", "Boroughs@show");
     //editing route
-//	$router->put("{borough}", "Boroughs@update");
+	$router->put("{borough}", "Boroughs@update");
     //delete borough route
-//	$router->delete("{borough}", "Boroughs@destroy");		
+	$router->delete("{borough}", "Boroughs@destroy");		
 
 });
