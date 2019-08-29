@@ -8,4 +8,9 @@ class Borough extends Model
 {
     protected $fillable = ["name"];
     public $timestamps = false;
+
+    public function parks()
+    {
+        return $this->hasMany(Park::class);
+    }
 }

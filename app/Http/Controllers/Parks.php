@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Park;
+use App\Borough;
 
 class Parks extends Controller
 {
@@ -34,7 +35,13 @@ class Parks extends Controller
         $park = Park::create($data);
 
         // return the article along with a 201 status code
+        $borough = Borough::find( $request->get("borough_id") );
+        
+        $borough->parks()->save($park);
+        
         return response($park, 201);
+
+        // store the borough on the parks
     }
 
     /**

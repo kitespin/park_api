@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Borough;
+use App\Http\Resources\BoroughResource;
+
+
+
 class Boroughs extends Controller
 {
     /**
@@ -11,9 +15,10 @@ class Boroughs extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Borough $borough)
     {
-        //
+        // return Borough::all();
+        return BoroughResource::collection($borough->parks);
     }
 
     /**
@@ -42,7 +47,7 @@ class Boroughs extends Controller
      */
     public function show($id)
     {
-        //
+          return Borough::find($id);
     }
 
     /**

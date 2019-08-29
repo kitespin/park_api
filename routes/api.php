@@ -25,6 +25,7 @@ $router->group(["prefix" => "parks"], function ($router) {
 	$router->get("/", "Parks@index");
     // {article} is a url parameter representing the id we want
     //get Parks route
+
 	$router->get("{park}", "Parks@show");
     //editing route
 	$router->put("{park}", "Parks@update");
@@ -43,11 +44,42 @@ $router->group(["prefix" => "boroughs"], function ($router) {
 	//it gets the borough index
 	$router->get("/", "Boroughs@index");
     // {borough} is a url parameter representing the id we want
+
     //get Boroughs route
 	$router->get("{borough}", "Boroughs@show");
+    //editing route
+
+
+
+	// boroughs id Url that lists all parks 
+    $router->get("{borough}/parks", "Boroughs@index");
+    
+
+
+
+
+    /// NOT COMPLETED ////
+	$router->put("{borough}", "Boroughs@update");
+    //delete borough route
+	$router->delete("{borough}", "Boroughs@destroy");		
+
+});
+
+$router->group(["prefix" => "sports"], function ($router) {
+
+	$router->post("/", "sports@store");
+	//it gets the borough index
+	$router->get("/", "sports@index");
+    // {borough} is a url parameter representing the id we want
+    //get Boroughs route
+	$router->get("{borough}", "sports@show");
     //editing route
 	$router->put("{borough}", "Boroughs@update");
     //delete borough route
 	$router->delete("{borough}", "Boroughs@destroy");		
 
 });
+
+
+
+
