@@ -14,7 +14,9 @@ class Parks extends Controller
      */
     public function index()
     {
-        //
+
+        return Park::all();
+
     }
 
     /**
@@ -43,7 +45,7 @@ class Parks extends Controller
      */
     public function show($id)
     {
-        //
+        return Park::find($id);
     }
 
     /**
@@ -66,6 +68,10 @@ class Parks extends Controller
      */
     public function destroy($id)
     {
-        //
+        $park = Park::find($id);
+        $park->delete();
+
+    // use a 204 code as there is no content in the response
+        return response(null, 204);
     }
 }
