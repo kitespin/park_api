@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 // we can group all our Parks routes together
@@ -30,14 +30,24 @@ $router->group(["prefix" => "parks"], function ($router) {
 	$router->put("{park}", "Parks@update");
     //delete park route
 	$router->delete("{park}", "Parks@destroy");
-
-
 	
 	//the 1 to many route setup for sport post this stays in here as its sport are linked to the park
 	$router->post("{park}/sports", "Sports@store");
 	//get sport post route this stays in here as its sport are linked to the park
 	$router->get("{park}/sports", "Sports@index");
-	
-	
+});
+
+$router->group(["prefix" => "boroughs"], function ($router) {
+
+	$router->post("/", "Boroughs@store");
+	//it gets the borough index
+	$router->get("/", "Boroughs@index");
+    // {borough} is a url parameter representing the id we want
+    //get Boroughs route
+//	$router->get("{borough}", "Boroughs@show");
+    //editing route
+//	$router->put("{borough}", "Boroughs@update");
+    //delete borough route
+//	$router->delete("{borough}", "Boroughs@destroy");		
 
 });
