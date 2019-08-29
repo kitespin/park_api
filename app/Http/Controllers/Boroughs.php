@@ -24,13 +24,13 @@ class Boroughs extends Controller
      */
     public function store(Request $request)
     {
-        // get post request data for title and article
+        // get post request data for name
         $data = $request->only(["name"]);
 
-        // create article with data and store in DB
+        // create borough with data and store in DB
         $borough = Borough::create($data);
 
-        // return the article along with a 201 status code
+        // return the borough along with a 201 status code
         return response($borough, 201);
     }
 
